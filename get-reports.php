@@ -64,7 +64,6 @@ if ( isset($start_date) ) {
 }
 $order_rows = '';
 $prefix = $wpdb->prefix;
-echo $prefix;
 $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
 foreach($payment_methods as $payment_method) {
@@ -79,7 +78,7 @@ foreach($payment_methods as $payment_method) {
 	//$select .= "
 	//AND post_id IN (SELECT ID FROM wp_posts WHERE post_status = 'wc-completed' OR post_status = 'wc-processing')";
 	//$select .= "";
-	$results = false;
+	echo $select;
 	$results = $wpdb->get_results( $select, OBJECT );
 
 	if ( $results ) {
