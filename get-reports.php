@@ -65,7 +65,6 @@ if ( isset($start_date) ) {
 	$start_date = date('Y-m-d 00:00:00', strtotime(current_time('mysql')));
 	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' +1 days'));
 }
-echo $start_date."<br>".$end_date;
 $order_rows = '';
 $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
