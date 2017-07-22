@@ -35,7 +35,7 @@ function jbm_accounting_report_html() {
 	if ( isset($_POST['end_date']) ) {
 		$end_date = $_POST['end_date'];
 	} else { 
-		$end_date = date('Y-m-d', strtotime('today'));
+		$end_date = date('Y-m-d', strtotime($start_date));
 	}
 	
 	$completed_check = $processing_check = $pending_check = $on_hold_check = $refunded_check = $cancelled_check = $failed_check = '';
