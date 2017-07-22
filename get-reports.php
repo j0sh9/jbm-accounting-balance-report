@@ -64,6 +64,7 @@ if ( isset($start_date) ) {
 }
 $order_rows = '';
 $prefix = $wpdb->prefix;
+echo $prefix;
 $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
 foreach($payment_methods as $payment_method) {
