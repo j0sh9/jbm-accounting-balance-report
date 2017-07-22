@@ -78,7 +78,7 @@ foreach($payment_methods as $payment_method) {
 	//$select .= "
 	//AND post_id IN (SELECT ID FROM wp_posts WHERE post_status = 'wc-completed' OR post_status = 'wc-processing')";
 	//$select .= "";
-	echo $select;
+	$results = false;
 	$results = $wpdb->get_results( $select, OBJECT );
 
 	if ( $results ) {
