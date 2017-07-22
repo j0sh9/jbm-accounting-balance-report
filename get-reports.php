@@ -23,12 +23,8 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 			<td><a href='/wp-admin/post.php?post=".$customer_order->get_id()."&action=edit' target='_blank'>".$customer_order->get_id()."</a></td>";
 		if( current_user_can('manage_options') ) $order_rows .= "<td><a href='/wp-admin/admin.php?page=jbm-generate-referrals&order_id=".$customer_order->get_id()."' target='_blank'>".$customer_order->get_id()."</a></td>";
 		$order_rows .= "
-			<td>".$order_date."</td>
 			<td>".$date_paid."</td>
-			<td>".$date_completed."</td>
-			<td><a href='/wp-admin/edit.php?post_status=all&post_type=shop_order&_customer_user=".$customer_order->get_customer_id()."' target='_blank'>".$customer_order->get_billing_first_name().' '.$customer_order->get_billing_last_name()."</a></td>
 			<td>".$customer_order->get_status()."</td>
-			<td>".$customer_order->get_payment_method()."</td>
 			<td>".number_format($customer_order->get_subtotal(),2)."</td>
 			<td>".number_format($customer_order->get_shipping_total(),2)."</td>
 			<td>".number_format($customer_order->get_total_tax(),2)."</td>
