@@ -67,6 +67,7 @@ $order_rows = '';
 $prefix = $wpdb->prefix;
 $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
+array_push($payment_methods, 'other');
 foreach($payment_methods as $payment_method) {
 	$select = "SELECT post_id FROM ".$prefix."postmeta
 	WHERE meta_key = '_paid_date'
