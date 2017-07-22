@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: _Accounting Report
-Description: Accounting Report Page
-Version: 1.0
+Plugin Name: _Payment Method Report
+Description: Payment Method Report by oredr Paid Date
+Version: 1.1
 */
 
 function jbm_accounting_report_faux_api() {
@@ -16,9 +16,9 @@ add_action( 'template_redirect', 'jbm_accounting_report_faux_api' );
 add_action( 'admin_menu', 'jbm_accounting_report' );
 function jbm_accounting_report() {
 	$jb_parent_slug = 'woocommerce';
-	$jb_page_title = 'Daily Accounting Report';
-	$jb_menu_title = 'Accounting Report';
-	$jb_capability = 'manage_options';
+	$jb_page_title = 'Payment Method Report';
+	$jb_menu_title = 'Payment Method Report';
+	$jb_capability = 'manage_affiliates';
 	$jb_menu_slug = 'jbm-accounting-report';
 	$jb_callback = 'jbm_accounting_report_html';
 	//$jb_icon_url = 'dashicons-media-spreadsheet';
@@ -56,10 +56,10 @@ function jbm_accounting_report_html() {
 	}
 </style>
 
-<h1>Balance Order Report</h1>
+<h1>Payment Method Report</h1>
 <div>
 <form action="" method="post" class="basic_order_search_form">
-	<label>Start Date: <input type="date" name="start_date" id="start_date" value="<?=$start_date;?>"   /></label> Order Creation Date
+	<label>Start Date: <input type="date" name="start_date" id="start_date" value="<?=$start_date;?>"   /></label> Order PAID Date
 	<br>
 	<label>End Date: <input type="date" name="end_date" id="end_date" value="<?=$end_date;?>"   /></label><br>
 	<p><button class="button" type="submit" name="jbm_order_query" value="1" >Search Orders</button></p>
