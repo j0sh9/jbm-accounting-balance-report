@@ -30,7 +30,7 @@ function jbm_accounting_report_html() {
 	if ( isset($_POST['start_date']) ) {
 		$start_date = $_POST['start_date'];
 	} else { 
-		$start_date = date('Y-m-d', strtotime('-1 days'));
+		$start_date = date('Y-m-d', strtotime(current_time('mysql').' -1 days'));
 	}
 	if ( isset($_POST['end_date']) ) {
 		$end_date = $_POST['end_date'];
