@@ -77,7 +77,7 @@ foreach($payment_methods as $payment_method) {
 	$results = $wpdb->get_results( $select, OBJECT );
 
 	//if ( count($results) > 0 ) {
-		$order_rows .= jbm_accounting_report_get_rows($results, $payment_method); 
+	$order_rows .= jbm_accounting_report_get_rows($results, $payment_method); 
 	//}
 }
 	
