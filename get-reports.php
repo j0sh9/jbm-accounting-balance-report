@@ -7,6 +7,7 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 	$total_tax = 0;
 	$discount_total = 0;
 	$total = 0;
+	$order_rows = '';
 	foreach($results as $order_key => $order_id) {
 		$customer_order = wc_get_order($order_id->post_id);
 
@@ -17,7 +18,7 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 		if ( ! empty($customer_order->get_date_completed()) ) 
 			$date_completed = wc_format_datetime( $customer_order->get_date_completed(), 'Y-m-d H:i' );
 		else $date_completed = '';
-		
+		/*
 		$order_rows .= "
 		<tr>
 			<td><a href='https://".$_SERVER['SERVER_NAME']."/wp-admin/post.php?post=".$customer_order->get_id()."&action=edit' target='_blank'>".$date_paid."</a></td>
@@ -28,14 +29,14 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 			<td>".number_format($customer_order->get_discount_total(),2)."</td>
 			<td>".number_format($customer_order->get_total(),2)."</td>
 		</tr>";
-		
+		*/
 		$subtotal += $customer_order->get_subtotal();
 		$shipping_total += $customer_order->get_shipping_total();
 		$total_tax += $customer_order->get_total_tax();
 		$discount_total += $customer_order->get_discount_total();
 		$total += $customer_order->get_total();
 	}
-	$order_totals = "
+	$order_rows .= "
 	<tr>
 		<th>".$customer_order->get_payment_method_title()."s</th>
 		<td>".count($results)."</td>
@@ -46,7 +47,7 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 		<td>".number_format($total,2)."</td>
 	</tr>";
 
-	return $order_totals.$order_rows;
+	return $order_rows;
 }
 
 global $wpdb;
