@@ -63,14 +63,15 @@ if ( isset($start_date) ) {
 	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' +1 days'));
 }
 $order_rows = '';
+$prefix = $wpdb->prefix;
 $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
 foreach($payment_methods as $payment_method) {
-	$select = "SELECT post_id FROM wp_postmeta
+	$select = "SELECT post_id FROM ".$prefix."_postmeta
 	WHERE meta_key = '_paid_date'
 	AND DATE(meta_value) BETWEEN '$start_date' AND '$end_date'
 	AND post_id IN (
-	SELECT post_id FROM wp_postmeta
+	SELECT post_id FROM ".$prefix."_postmeta
 	WHERE meta_key = '_payment_method'
 	AND meta_value = '$payment_method'
 	)";
