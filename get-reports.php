@@ -60,7 +60,11 @@ global $wpdb;
 if ( isset($_GET['start_date']) ) $start_date = $_GET['start_date'];
 if ( isset($start_date) ) {
 	$start_date = date('Y-m-d 00:00:00', strtotime($start_date));
-	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' + 1 days'));
+	if ( isset($end_date) ) {
+		$end_date = date('Y-m-d 00:00:00', strtotime($end_date.' + 1 days'));
+	} else {	
+		$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' + 1 days'));
+	}
 } else {
 	$start_date = date('Y-m-d 00:00:00', strtotime('-1 days'));
 	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' +1 days'));
