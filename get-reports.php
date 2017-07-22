@@ -67,12 +67,16 @@ $gateways = new WC_Payment_Gateways;
 $payment_methods = $gateways->get_payment_gateway_ids();
 foreach($payment_methods as $payment_method) {
 	$select = "SELECT post_id FROM wp_postmeta
-	WHERE ";
-	$select .= "meta_key LIKE '_paid_date' AND DATE(meta_value) BETWEEN '$start_date' AND '$end_date' ";
+	WHERE meta_key = '_paid_date'
+	AND DATE(meta_value) BETWEEN '$start_date' AND '$end_date'
+	AND post_id IN (
+	SELECT post_id FROM wp_postmeta
+	WHERE meta_key = '_payment_method'
+	AND meta_value = '$payment_method'
+	)";
 	//$select .= "
 	//AND post_id IN (SELECT ID FROM wp_posts WHERE post_status = 'wc-completed' OR post_status = 'wc-processing')";
-	$select .= "
-	AND post_id IN (SELECT post_id FROM wp_postmeta WHERE meta_key = '_payment_method' AND meta_value = '$payment_method')";
+	//$select .= "";
 	$results = false;
 	$results = $wpdb->get_results( $select, OBJECT );
 
