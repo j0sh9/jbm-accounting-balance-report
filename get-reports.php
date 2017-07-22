@@ -20,7 +20,7 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 		
 		$order_rows .= "
 		<tr>
-			<td><a href='/wp-admin/post.php?post=".$customer_order->get_id()."&action=edit' target='_blank'>".$date_paid."</a></td>
+			<td><a href='https://".$_SERVER['SERVER_NAME']."/wp-admin/post.php?post=".$customer_order->get_id()."&action=edit' target='_blank'>".$date_paid."</a></td>
 			<td>".$customer_order->get_status()."</td>
 			<td>".number_format($customer_order->get_subtotal(),2)."</td>
 			<td>".number_format($customer_order->get_shipping_total(),2)."</td>
