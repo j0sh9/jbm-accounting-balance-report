@@ -86,6 +86,7 @@ foreach($payment_methods as $payment_method) {
 	
 ?>
 <div class="balance-report">
+	<p><?=date('Y-m-d', $start_date);?></p>
 	<table class="jb-affiliate-report">
 		<thead>
 			<tr>
