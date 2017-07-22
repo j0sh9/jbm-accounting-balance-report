@@ -57,11 +57,12 @@ function jbm_accounting_report_get_rows($results,$payment_method) {
 }
 
 global $wpdb;
-
+if ( isset($_GET['start_date']) ) $start_date = $_GET['start_date'];
 if ( isset($start_date) ) {
 	$start_date = date('Y-m-d 00:00:00', strtotime($start_date));
-	$end_date = date('Y-m-d 00:00:00', strtotime($end_date.' + 1 days'));
+	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' + 1 days'));
 } else {
+	die('No Date');
 	$start_date = date('Y-m-d 00:00:00', strtotime(current_time('mysql').' -1 days'));
 	$end_date = date('Y-m-d 00:00:00', strtotime($start_date.' +1 days'));
 }
