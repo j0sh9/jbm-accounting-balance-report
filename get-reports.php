@@ -73,12 +73,12 @@ foreach($payment_methods as $payment_method) {
 	//AND post_id IN (SELECT ID FROM wp_posts WHERE post_status = 'wc-completed' OR post_status = 'wc-processing')";
 	$select .= "
 	AND post_id IN (SELECT post_id FROM wp_postmeta WHERE meta_key = '_payment_method' AND meta_value = '$payment_method')";
-
+	$results = false;
 	$results = $wpdb->get_results( $select, OBJECT );
 
-	//if ( count($results) > 0 ) {
-	$order_rows .= jbm_accounting_report_get_rows($results, $payment_method); 
-	//}
+	if ( $results ) {
+		$order_rows .= jbm_accounting_report_get_rows($results, $payment_method); 
+	}
 }
 	
 ?>
